@@ -8,4 +8,5 @@ require_once 'core/Controller.php';
 require_once 'core/Database.php';
 
 //tes
-// Bisa ditambah helper (jika ada)
+// Bisa ditambah helper (jika ada)//tes2
+
