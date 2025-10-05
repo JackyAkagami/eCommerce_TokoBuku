@@ -1,0 +1,75 @@
+### 🗂 Struktur Project E-Commerce (MVC)
+
+**📂 app** → folder utama berisi kode aplikasi dengan konsep **MVC (Model - View - Controller)**.
+
+* **📂 controllers/**
+  Berisi file controller yang mengatur alur logika aplikasi (menangkap request dari user, memanggil model, dan menampilkan view).
+
+  * `Admin.php` → controller untuk halaman/admin panel.
+  * `Auth.php` → controller untuk login, register, dan logout.
+  * `Cart.php` → controller untuk keranjang belanja.
+  * `Checkout.php` → controller untuk proses checkout.
+  * `Home.php` → controller halaman utama.
+  * `Produk.php` → controller untuk produk (list, detail produk, dll).
+
+* **📂 core/**
+  Berisi file inti (framework mini buatan sendiri).
+
+  * `App.php` → router utama, membaca URL lalu memanggil controller & method.
+  * `Controller.php` → class induk controller, biasanya ada fungsi `view()` atau helper lainnya.
+  * `Database.php` → class untuk koneksi database & query (pakai PDO).
+
+* **📂 models/**
+  Berisi model (akses database).
+
+  * `Laporan_Model.php` → model laporan (misalnya penjualan, order, dll).
+  * `Pesanan_model.php` → model untuk data pesanan.
+  * `Produk_model.php` → model untuk data produk.
+  * `User_model.php` → model untuk data user (login, register, role, dll).
+
+* **📂 views/**
+  Berisi tampilan (UI), dipanggil dari controller.
+
+  * 📂 **auth/**
+
+    * `forget_pw.php` → halaman lupa password.
+    * `login.php` → halaman login.
+    * `register.php` → halaman register.
+  * 📂 **produk/**
+
+    * `detail.php` → halaman detail produk.
+    * `index.php` → halaman list produk.
+  * 📂 **templates/**
+
+    * `footer.php` → template footer.
+    * `header.php` → template header.
+  * `cart.php` → halaman keranjang.
+  * `checkout.php` → halaman checkout.
+  * `home.php` → halaman utama.
+
+* **📂 config/**
+
+  * `config.php` → file konfigurasi utama (misalnya `BASEURL`, setting database, dll).
+
+---
+
+**📂 public/** → folder yang diakses oleh browser (semua asset publik).
+
+* 📂 **css/**
+
+  * `style.css` → file stylesheet utama.
+* 📂 **img/** → gambar untuk produk, UI, dll.
+* 📂 **js/** → file javascript frontend.
+
+---
+
+### 📑 Alur Singkat
+
+1. **User akses URL** → dibaca `App.php` (router).
+2. Router cari **Controller** sesuai URL → contoh `/auth/login` manggil `Auth.php`.
+3. Controller bisa panggil **Model** untuk akses database.
+4. Controller lempar data ke **View** → halaman ditampilkan ke user.
+
+---
+
+👉 Dengan deskripsi ini, developer lain bisa langsung tahu **dimana edit file login, produk, cart, dll** tanpa bingung.
