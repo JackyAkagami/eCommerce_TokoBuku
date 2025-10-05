@@ -72,4 +72,58 @@
 
 ---
 
-👉 Dengan deskripsi ini, developer lain bisa langsung tahu **dimana edit file login, produk, cart, dll** tanpa bingung.
+ Dengan deskripsi ini, developer lain bisa langsung tahu **dimana edit file login, produk, cart, dll** tanpa bingung.
+
+SECARA SINGKATNYA GINI SISTEM DARI FOLDER DAN FILENYA GES
+JANGAN ASALTAROOOOOO!!! DIBACA DULU:
+E-COMMERCE/
+│
+├── app/
+│   ├── controllers/
+│   │   ├── Admin.php        → Controller untuk halaman admin
+│   │   ├── Auth.php         → Controller untuk login, register, logout
+│   │   ├── Cart.php         → Controller untuk keranjang belanja
+│   │   ├── Checkout.php     → Controller untuk proses checkout
+│   │   ├── Home.php         → Controller untuk halaman utama
+│   │   ├── Produk.php       → Controller untuk halaman produk
+│   │
+│   ├── core/
+│   │   ├── App.php          → Routing utama (menangani URL → controller/method)
+│   │   ├── Controller.php   → Class induk semua controller (untuk load model & view)
+│   │   ├── Database.php     → Class untuk koneksi & query database (PDO)
+│   │
+│   ├── models/
+│   │   ├── User_model.php   → Model user (login, register, getUserByEmail)
+│   │   ├── Produk_model.php → Model produk
+│   │   ├── Pesanan_model.php→ Model pesanan
+│   │   ├── Laporan_model.php→ Model laporan penjualan
+│   │
+│   ├── views/
+│   │   ├── auth/
+│   │   │   ├── login.php    → Tampilan form login
+│   │   │   ├── register.php → Tampilan form register
+│   │   │   ├── forget_pw.php→ Tampilan lupa password
+│   │   │
+│   │   ├── produk/
+│   │   │   ├── index.php    → Tampilan list produk
+│   │   │   ├── detail.php   → Tampilan detail produk
+│   │   │
+│   │   ├── cart.php         → Tampilan keranjang
+│   │   ├── checkout.php     → Tampilan checkout
+│   │   ├── home.php         → Tampilan halaman utama
+│   │   │
+│   │   ├── templates/
+│   │       ├── header.php   → Template header
+│   │       ├── footer.php   → Template footer
+│   │
+│   ├── init.php             → File loader (include core & config)
+│
+├── config/
+│   └── config.php           → Konfigurasi utama (DB, BASEURL, dll)
+│
+├── public/
+│   ├── index.php            → Entry point project (load init.php → App)
+│   ├── css/
+│   │   └── style.css        → CSS utama
+│   ├── img/                 → Folder gambar
+│
