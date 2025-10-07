@@ -38,6 +38,15 @@
         <input type="text" class="phone-number" placeholder="8123456789">
       </div>
 
+      <!-- Gender Selection -->
+      <label for="gender">Gender*</label>
+      <select id="gender" required>
+        <option value="" disabled selected>Select your gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="notsay">Prefer not to say</option>
+      </select>
+
       <label for="password">Password*</label>
       <input type="password" id="password" placeholder="Enter your password" required>
       <small>At least 6 characters with special character</small>
