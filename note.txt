@@ -135,7 +135,7 @@ ini query untuk buat database :
 
 DATABASE
 (dimulai dari diawah)
-CREATE DATABASE ecommere;
+CREATE DATABASE ecommercse;
 USE ecommerce;
 
 -- users
