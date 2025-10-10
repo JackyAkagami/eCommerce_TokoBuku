@@ -19,7 +19,7 @@ class User_model {
         return $this->db->single();
     }
 
-    // egistrasi user baru
+    // Registrasi user baru
     public function register($nama, $gender, $email, $password, $alamat = null, $no_hp = null) {
         // Query untuk menambahkan user baru ke tabel users
         // Role default selalu 'user'
@@ -44,7 +44,7 @@ class User_model {
         return $this->db->resultSet();
     }
 
-    // Update password berdasarkan email (user lupa password)
+    // Update password berdasarkan email
     public function updatePasswordByEmail($email, $newPassword) {
         // Query untuk update password user sesuai email
         $this->db->query("UPDATE users SET password = :password WHERE email = :email");
