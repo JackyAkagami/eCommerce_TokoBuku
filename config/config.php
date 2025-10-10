@@ -22,4 +22,4 @@ define('APPROOT', __DIR__ . '/../app');
 // ==========================
 // BASEURL digunakan untuk membuat link absolut di project
 // Sesuaikan dengan nama folder project di htdocs/ (XAMPP) atau www/ (Laragon)
-define('BASEURL', 'http://localhost/ecommers/public');
+define('BASEURL', 'http://localhost/E-Commerce/public');
