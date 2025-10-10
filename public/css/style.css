@@ -1,69 +1,686 @@
-/*LOGIN PAGE STYLE*/
-body {
-margin: 0;
-font-family: Arial, sans-serif;
-background-color: #586053;
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100vh;
-}
-.login-box {
-background: white;
-padding: 30px;
-border-radius: 8px;
-box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-width: 300px;
-}
-.login-box h2 {
-margin-bottom: 20px;
-font-size: 22px;
-color: #000;
-}
-.login-box label {
-display: block;
-margin-bottom: 5px;
-font-weight: bold;
-font-size: 14px;
-}
-.login-box input[type="email"],
-.login-box input[type="password"] {
-width: 100%;
-padding: 10px;
-margin-bottom: 15px;
-border: 1px solid #ccc;
-border-radius: 4px;
-font-size: 14px;
-}
-.login-box button {
-width: 100%;
-padding: 10px;
-background: black;
-color: white;
-font-size: 16px;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-}
-.login-box button:hover {
-background: #333;
-}
-.login-box .links {
-margin-top: 15px;
-display: flex;
-justify-content: space-between;
-font-size: 13px;
-}
-.login-box .links a {
-color: black;
-text-decoration: underline;
-}
-.login-box .footer {
-  margin-top: 20px;
-  text-align: center;
-  font-size: 10px;     
-  color: gray;
-  padding-bottom: 8px;
+/* =========================================
+   RESET
+========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/*REGISTER PAGE STYLE*/
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #FFFEF2;
+    color: #333;
+}
+
+/* ==============================
+   NAVBAR
+============================== */
+.navbar {
+  background: #FFFEF2;
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar .container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .logo {
+  font-size: 22px;
+  font-weight: bold;
+  font-family: serif;
+  color: #000;
+}
+
+/* Menu kiri */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #586053;
+}
+
+/* ==============================
+   ICONS kanan
+============================== */
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.nav-icons .icon {
+  font-size: 18px;
+  color: #333;
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: color 0.3s ease;
+}
+
+.nav-icons .icon:hover {
+  color: #586053;
+}
+
+/* ==============================
+   DROPDOWN
+============================== */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 40px;
+  background: #fff;
+  min-width: 160px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  z-index: 200;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 15px;
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.dropdown-content a:hover {
+  background: #f5f5f5;
+  color: #586053;
+}
+
+.dropdown-content.show {
+  display: block;
+}
+
+/* ================================
+   HERO SECTION
+================================ */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Overlay tipis */
+.hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+  z-index: 0;
+}
+
+/* Teks kiri bawah */
+.hero-left {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  max-width: 600px;
+  color: #fff;
+  z-index: 1;
+}
+
+.hero-left h2 {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Tombol kanan bawah */
+.hero-right {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  z-index: 1;
+}
+
+.hero-right .btn {
+  display: inline-block;
+  padding: 9px 18px;
+  background: #e67e22;
+  color: #fff;
+  border-radius: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.hero-right .btn:hover {
+  background: #cf711f;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .hero-left {
+    left: 20px;
+    right: 20px;
+    bottom: 80px;
+  }
+
+  .hero-left h2 {
+    font-size: 20px;
+  }
+
+  .hero-right {
+    right: 20px;
+    bottom: 20px;
+  }
+
+  .hero-right .btn {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+}
+
+
+/* =========================================
+   PRODUCTS
+========================================= */
+.products {
+    padding: 60px 90px;
+    background: #FFFEF2;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.products h3 {
+    font-size: 24px;
+}
+
+.section-header a {
+    font-size: 14px;
+    text-decoration: underline;
+    color: #586053;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.product-card {
+    background: #fff;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+    max-width: 100%;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.product-card .title {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.product-card .price {
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
+}
+
+/* =========================================
+   GALLERY / PROMO
+========================================= */
+/* Section Gallery */
+.gallery {
+  padding: 40px 40px; /* biar mepet kiri kanan */
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05); /* zoom sedikit saat hover */
+}
+
+/* Overlay teks */
+.gallery-item .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4); /* gelap transparan */
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gallery-item:hover .overlay {
+  opacity: 1;
+}
+
+.gallery-item .overlay p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* =========================================
+   LOGIN PAGE
+========================================= */
+body.login-page {
+    background-color: #586053;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    width: 320px;
+    text-align: left;
+}
+
+.login-box h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    text-align: center;
+    color: #000;
+}
+
+.login-box label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #444;
+}
+
+.login-box input[type="email"],
+.login-box input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 10px;
+    background: black;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.login-box button:hover {
+    background: #333;
+}
+
+.login-box .links {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+.login-box .links a {
+    color: black;
+    text-decoration: underline;
+}
+
+.login-box .footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 10px;
+    color: gray;
+}
+
+.login-box .back-home-text {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.login-box .back-home-text a {
+    color: black;
+    text-decoration: underline;
+}
+
+.login-box .back-home-text a:hover {
+    color: #586053;
+}
+
+
+/* =========================================
+   REGISTER PAGE
+========================================= */
+body.register-page {
+    background-color: #586053;  /* paksa override */
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+.register-box {
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 400px;
+    margin: auto;
+}
+
+.register-box h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    text-align: left;
+    color: #000;
+}
+
+.register-box label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #444;
+}
+
+.register-box input,
+.register-box select,
+.register-box textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.register-box select {
+    background: #fff;
+    cursor: pointer;
+}
+
+.register-box textarea {
+    resize: vertical;
+}
+
+.register-box button {
+    width: 100%;
+    padding: 12px;
+    background: black;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+}
+
+.register-box button:hover {
+    background: #333;
+}
+
+.register-box .note {
+    font-size: 12px;
+    color: gray;
+    margin-top: -8px;
+    margin-bottom: 12px;
+}
+
+.register-box .links {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+.register-box .links a {
+    color: black;
+    text-decoration: underline;
+}
+
+
+
+/* =========================================
+   RESPONSIVE REGISTER FORM
+========================================= */
+@media (max-width: 600px) {
+    .register-box {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .register-box h2 {
+        font-size: 20px;
+    }
+
+    .register-box input,
+    .register-box select,
+    .register-box textarea {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .register-box button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .register-box .back-home-text {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.register-box .back-home-text a {
+    color: black;
+    text-decoration: underline;
+}
+
+.register-box .back-home-text a:hover {
+    color: #586053;
+}
+
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+footer {
+    background: #586053;  /* hijau gelap */
+    color: #fdfdfd;
+    padding: 60px 100px 120px; /* ruang bawah untuk logo */
+    position: relative;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 180px 180px 260px 180px; /* kontrol lebar */
+    justify-content: space-between; /* spasi rata */
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.footer-col p,
+.footer-col a {
+    font-size: 13px;
+    color: #FFFEF2;
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+.footer-col a:hover {
+    text-decoration: underline;
+}
+
+/* Logo besar di pojok kanan bawah */
+.footer-logo {
+    position: absolute;
+    right: 100px;
+    bottom: 25px;
+    font-size: 64px;
+    font-weight: bold;
+    font-family: "Georgia", serif; /* elegan */
+    color: #FFFEF2;
+}
+
+/* =========================================
+   RESPONSIVE FOOTER
+========================================= */
+footer {
+    background: #586053;
+    color: #fdfdfd;
+    padding: 50px 80px;
+}
+
+.footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+}
+
+/* Grid untuk 4 kolom */
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 50px; /* jarak antar kolom */
+}
+
+.footer-col p,
+.footer-col a {
+    font-size: 13px;
+    color: #fdfdfd;
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.footer-col a:hover {
+    text-decoration: underline;
+}
+
+/* Logo di kanan bawah */
+.footer-logo {
+    font-size: 56px;
+    font-weight: bold;
+    font-family: serif;
+    color: #fdfdfd;
+}
+
+/* Responsif */
+@media (max-width: 900px) {
+    .footer-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, auto);
+        margin-bottom: 30px;
+    }
+
+    .footer-logo {
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .footer-logo {
+        font-size: 40px;
+        margin-top: 20px;
+    }
+}

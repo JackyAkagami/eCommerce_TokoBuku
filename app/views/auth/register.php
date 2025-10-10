@@ -1,71 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create a Monora Account</title>
-  <link rel="stylesheet" href="style.css">
-
-  <!-- Google Fonts: Poppins -->
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-  </style>
+    <meta charset="UTF-8">
+    <!-- Judul halaman -->
+    <title>Register</title>
+    <!-- Load file CSS -->
+    <link rel="stylesheet" href="<?= BASEURL; ?>/css/style.css">
+    <!-- Supaya responsive di perangkat mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
-  <!-- Logo -->
-  <header class="topbar">
-    <div class="brand">
-      <img src="asep/Vector.png" alt="Monora Logo" class="logo-img">
-      <span class="logo-text">monora</span>
+<body class="register-page">
+
+    <div class="register-box">
+        <!-- Judul form registrasi -->
+        <h2>Create a New Account</h2>
+
+        <!-- Form registrasi user baru -->
+        <!-- Method POST, action kosong artinya submit ke halaman ini sendiri -->
+        <form method="POST" action="">
+            <!-- Input nama -->
+            <label for="nama">Name*</label>
+            <input type="text" id="nama" name="nama" required>
+
+            <!-- Input gender -->
+            <label for="gender">Gender*</label>
+            <select id="gender" name="gender" required>
+                <option value="">Select your gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+
+            <!-- Input email -->
+            <label for="email">Email*</label>
+            <input type="email" id="email" name="email" required>
+
+            <!-- Input nomor telepon -->
+            <label for="no_hp">Phone*</label>
+            <input type="text" id="no_hp" name="no_hp" required>
+
+            <!-- Input alamat -->
+            <label for="alamat">Address*</label>
+            <textarea id="alamat" name="alamat" rows="3" required></textarea>
+
+            <!-- Input password -->
+            <label for="password">Password*</label>
+            <input type="password" id="password" name="password" required>
+            <!-- Catatan tambahan untuk password -->
+            <p class="note">At least 6 characters with special character</p>
+
+            <!-- Tombol submit registrasi -->
+            <button type="submit">Sign up</button>
+        </form>
+
+        <!-- Link tambahan -->
+        <div class="links">
+            <!-- Link bantuan (belum diarahkan ke halaman tertentu) -->
+            <a href="#">You need help?</a>
+            <!-- Link menuju halaman login -->
+            <a href="<?= BASEURL; ?>/auth/login">Do you already have an account?</a>
+        </div>
+
+        <!-- Link kembali ke halaman utama -->
+        <div class="back-home-text">
+            <a href="<?= BASEURL; ?>/home">Back to Home</a>
+        </div>
     </div>
-  </header>
-
-  <!-- Content -->
-  <main class="content">
-    <h1>Simplifying Business,<br>Empowering Growth.</h1>
-
-    <h2>Create a Monora Account</h2>
-    <form>
-      <label for="name">Name*</label>
-      <input type="text" id="name" placeholder="Enter your name" required>
-
-      <label for="email">Email*</label>
-      <input type="email" id="email" placeholder="Enter your email" required>
-
-      <label for="phone">Phone</label>
-      <div class="phone-group">
-        <input type="text" class="phone-code" placeholder="+62">
-        <input type="text" class="phone-number" placeholder="8123456789">
-      </div>
-
-      <!-- Gender Selection -->
-      <label for="gender">Gender*</label>
-      <select id="gender" required>
-        <option value="" disabled selected>Select your gender</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="notsay">Prefer not to say</option>
-      </select>
-
-      <label for="password">Password*</label>
-      <input type="password" id="password" placeholder="Enter your password" required>
-      <small>At least 6 characters with special character</small>
-
-      <div class="links">
-        <a href="#">You need help?</a>
-        <a href="#">Do you already have an account?</a>
-      </div>
-
-      <button type="submit" class="btn">Sign up</button>
-    </form>
-  </main>
-
-  <!-- Call Center Logo (pojok kanan bawah) -->
-  <img src="asep/Component 10.png" alt="Call Center" class="call-center">
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 monora</p>
-  </footer>
 </body>
 </html>
