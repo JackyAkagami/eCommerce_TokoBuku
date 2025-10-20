@@ -222,3 +222,47 @@ VALUES ('Administrator', 'male', 'admin@admin.com', MD5('admin123'), 'admin', 'b
 
 
 untuk user sudah bisa lewat register lalu login 
+
+//INI QUERRY UNTUK MASUKIN DATA KATEGORI DI TABLE CATEGORIES
+INSERT INTO categories (nama_kategori, deskripsi) VALUES
+('Books', 'Berbagai jenis buku bacaan seperti novel, komik, dan literatur lainnya.'),
+('Clothes', 'Baju koko, peci, sejadah, mukena, dan perlengkapan sholat lainnya.'),
+('Gift Box', 'Paket hadiah spesial berisi kombinasi buku, aksesoris, dan barang tematik.'),
+('Poster', 'Poster dekoratif bertema kutipan inspiratif atau karya seni literasi.');
+
+//INI QUERRY UNTUK MASUKIN DATA PRODUK KATEGORI BOOKS
+INSERT INTO products (id_kategori, nama_produk, deskripsi, harga, stok, gambar) VALUES
+(1, 'Love from Mecca to Medina', 'Novel karya S.K. Ali yang menggambarkan perjalanan spiritual dan cinta di Tanah Suci.', 160300, 10, '1 - A.jpg'),
+(1, 'The Invisible Muslim', 'Buku karya Medina Tenour Whiteman tentang pengalaman menjadi Muslim di dunia Barat.', 159000, 8, '2 - A.jpg'),
+(1, 'Ketika Bermaksiat', 'Buku islami yang mengingatkan pembaca untuk bertaubat dan memperbaiki diri.', 202300, 20, '3 - A.jpg'),
+(1, 'Ramadan Activity Book', 'Buku aktivitas anak-anak bertema Ramadhan yang edukatif dan menyenangkan.', 209000, 15, '4 - A.jpg'),
+(1, 'Modul Ajar: Adab dan Akhlak', 'Buku panduan pendidikan karakter Islami untuk anak-anak.', 153500, 18, '5 - A.jpg'),
+(1, 'Ayo kita ngaji: di bulan suci', 'Buku yang mengajak kita terutama pada anak-anak untuk melakukan kegiatan positif di bulan ramadhan dengan cara mengaji al-quran.', 259000, 20, '6 - A.jpg'),
+(1, 'Nabi Tak Pernah Mengajarkan Kita Malas', 'Buku yang dikarang oleh Zaka Putra R. & Husna Widyani berisi tentang aktivitas Nabi Muhammad SAW dari pagi hingga malam agar kita tidak menjadi pribadi yang malas.', 109000, 18, '7 - A.jpg'),
+(1, 'Indahnya Doa Para Nabi yang Menggetarkan ARSY', 'Isi buku ini adalah sebuah kumpulan doa-doa para Nabi yang kita butuhkan dan untuk diamalkan.', 305000, 13, '8 - A.jpg'),
+(1, 'My First Quran Storybook', 'Sebuah buku yang berisi tentang cerita pengarang tentang bacaan quran yang pertama kali dia baca.', 119000, 14, '9 - A.jpg'),
+(1, '336 Stories From Quran and Hadith', 'Kumpulan cerita tentang kisah nabi dan cerita islami dari al-quran dan hadis.', 279000, 20, '10 - A.jpg'),
+(1, 'Modul Pembelajaran: Pendidikan Agama Islam', 'Buku anak tentang ajaran-ajaran yang ada dan berlaku pada agama Islam.', 210000, 17, '11 - A.jpg'),
+(1, 'Under The Ramadhan Moon', '"Under the Ramadan Moon" adalah buku cerita yang hangat dan puitis, ideal untuk memperkenalkan dan menjelaskan makna bulan Ramadan kepada anak-anak usia dini. Melalui ilustrasi yang indah dan narasi yang tenang, buku ini membawa pembaca cilik merasakan suasana magis, spiritual, dan kebersamaan di malam-malam Ramadan.', 339000, 3, '12.jpg'),
+(1, 'Al-Quranul Karim Al-Haramain', 'AL-QURANUL KARIM AL-HARAMAIN adalah mushaf premium yang dirancang khusus untuk memperkaya pengalaman tadabur (merenungi makna) Al-Quran. Edisi terbaru dari Cordoba ini menggabungkan kemudahan membaca dengan fitur-fitur tafsir ringkas yang sangat bermanfaat, menjadikannya pilihan ideal bagi siapa pun yang ingin memahami Al-Quran secara tematik dan mendalam.', 90000, 11, '13 - A.jpg');
+
+//INI QUERRY UNTUK MASUKIN DATA PRODUK KATEGORI 2
+INSERT INTO products (id_kategori, nama_produk, deskripsi, harga, stok, gambar) VALUES
+(2, 'Koko Lengan Panjang Premium', 'Baju koko berbahan katun adem dengan desain elegan dan nyaman dipakai untuk ibadah.', 180000, 20, '46.jpg'),
+(2, 'Sarung Tenun Wadimor Hitam Motif Garis (Motif Poleng)', 'Sarung tenun premium merek Wadimor, salah satu merek sarung terkemuka di Indonesia, yang dikenal akan kualitas benang dan kenyamanannya. Sarung ini hadir dalam kemasan kotak eksklusif.', 160000, 15, '41.jpg'),
+(2, 'Sarung Tenun Sapphire Polos Warna Tumpal Dobby (PWD)', 'Sarung tenun berkualitas tinggi dari merek Sapphire, yang dikenal akan kehalusan benang dan ragam warna elegan. Sarung ini menawarkan desain klasik polos dengan tekstur modern.', 130000, 25, '43.jpg'),
+(2, 'Peci/Songkok Beludru Hitam Polos', 'Peci atau Songkok tradisional dengan model standar (tanpa ventilasi) yang merupakan perlengkapan wajib bagi pria Muslim di Indonesia untuk ibadah maupun acara formal.', 45000, 40, '45.jpg'),
+(2, 'Sajadah Premium Desain Islami Minimalis', 'Sajadah modern dengan desain yang elegan, menampilkan perpaduan warna netral dan motif Islami yang indah, cocok untuk shalat sehari-hari maupun sebagai hadiah.', 160000, 18, '40.jpg');
+
+//INI QUERRY UNTUK MASUKIN DATA PRODUK KATEGORI 3
+INSERT INTO products (id_kategori, nama_produk, deskripsi, harga, stok, gambar) VALUES
+(3, 'Premium Gift Box Books', 'NADI Premium Gift Box Books - Eid Mubarak 2025 Kategori: Parcel Buku/Hadiah Eksklusif Tema: Hari Raya Idulfitri / Lebaran Warna Kemasan: Hijau Tua / Abu-abu (Deep Olive/Charcoal).', 459000, 14, '20.jpg'),
+(3, ' Premium Gift Box Packed', 'NADI Premium Gift Box Packet - Eid Mubarak 2025 Kategori: Parcel Hari Raya / Kotak Hadiah Eksklusif Desain: Kotak Sleeve atau Pizza Box (Model Datar/Horizontal) Warna Kemasan: Hijau Tua / Abu-abu (Deep Olive/Charcoal).', 419300, 22, '21.jpg');
+
+//INI QUERRY UNTUK MASUKIN DATA PRODUK KATEGORI 4
+INSERT INTO products (id_kategori, nama_produk, deskripsi, harga, stok, gambar) VALUES
+(4, 'Poster NewYear 2025', 'Poster ini menampilkan perpaduan sempurna antara estetika minimalis modern dan fungsionalitas. Dengan desain yang didominasi warna merah menyala (crimson) dan putih, poster ini mampu memberikan statement yang berani dan kontemporer di ruangan mana pun.', 339000, 17, '30 - A.jpg'),
+(4, 'Poster Al-Adha', 'Poster ini menggunakan gaya ilustrasi yang unik dan menarik, memadukan elemen tradisional Iduladha (seperti kambing dan arsitektur gurun) dengan sentuhan desain vintage modern. Desain ini efektif menarik perhatian dan menyampaikan informasi acara dengan estetika yang berbeda dari poster pada umumnya.', 429000, 7, '31 - A.jpg'),
+(4, 'Poster 36 Days Type', 'Poster ini menghadirkan karya seni grafis yang unik dan penuh karakter, menjadikannya elemen dekorasi yang eye-catching dan stylish. Dengan desain yang menyerupai prangko raksasa, poster ini memberikan sentuhan pop art yang berani dan modern pada interior ruangan.', 475000, 18, '32 - A.jpg'),
+(4, 'Poster Food', 'Poster seni cetak ini menampilkan ilustrasi meja makan yang aesthetic dan detail tentang hidangan yang disajikan, kemungkinan besar untuk momen sahur (suhoor) atau berbuka puasa (iftar). Desain ini sangat cocok untuk dekorasi dapur, ruang makan, atau sebagai hadiah untuk pecinta kuliner dan ilustrasi bertema Islami/Timur Tengah.', 342000, 11, '33 - A.jpg'),
+(4, 'Poster Eid Mubarak', 'Poster ini menampilkan desain line art yang sangat minimalis, modern, dan elegan. Karya seni ini sempurna untuk memberikan sentuhan nuansa Islami yang tenang dan berkelas pada dekorasi rumah, terutama saat menyambut Ramadan atau Idulfitri.', 429000, 20, '34 - E.jpg');
