@@ -217,7 +217,8 @@ CREATE TABLE shipments (
 
 lalu untuk admin kita tambahin manual juga di sql : (dibaca dulu)
 
-INSERT INTO users (nama, gender, email, password, role, alamat, no_hp) 
-VALUES ('Administrator', 'male', 'admin@admin.com', MD5('admin123'), 'admin', bebas, bebas;
+INSERT INTO users (nama, gender, email, password, role, alamat, no_hp)
+VALUES ('Administrator', 'male', 'admin@admin.com', MD5('admin123'), 'admin', 'bebas', 'bebas');
+
 
 untuk user sudah bisa lewat register lalu login 
