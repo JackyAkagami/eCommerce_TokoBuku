@@ -1,48 +1,71 @@
-<div class="container products">
+<div class="container product-page">
+  <h2 class="page-title">Product List</h2>
 
-    <div class="section-header">
-
-        <h2>Daftar Produk</h2>
-        
-        <form method="GET" action="<?= BASEURL; ?>/produk">
-            <label for="kategori" style="font-weight: bold;">Filter kategori:</label>
-            <select id="kategori" name="kategori" class="custom-dropdown"
-                onchange="window.location='<?= BASEURL ?>/produk/index/'+this.value;">
-                <option value="">Semua Kategori</option>
-                <?php foreach ($data['categories'] as $category): ?>
-                    <option value="<?= $category['id']; ?>" <?= ($data['selected_kategori'] == $category['id']) ? 'selected' : '' ?>>
-                        <?= htmlspecialchars($category['nama_kategori']); ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
-        </form>
-    </div>
-
-    <!-- Grid untuk menampilkan kumpulan produk -->
+  <?php if (empty($data['products'])): ?>
+    <p class="text-center text-muted">No products available.</p>
+  <?php else: ?>
     <div class="product-grid">
-        <!-- Cek apakah ada produk di database -->
-        <?php if (!empty($data['products'])): ?>
-            <!-- Looping semua produk yang dikirim dari controller -->
-            <?php foreach ($data['products'] as $product): ?>
-                <div class="product-card">
-                    <!-- Gambar produk -->
-                    <!-- Jika gambar kosong, gunakan gambar default 'noimage.jpg' -->
-                    <img src="<?= BASEURL; ?>/img/<?= $product['gambar'] ?: 'noimage.jpg'; ?>"
-                        alt="<?= $product['nama_produk']; ?>">
+      <?php foreach ($data['products'] as $p): ?>
+        <div class="product-card">
+          <div class="image-wrapper">
+            <!-- Gambar utama -->
+            <img 
+              src="<?= BASEURL; ?>/img/<?= htmlspecialchars($p['gambar']); ?>" 
+              alt="<?= htmlspecialchars($p['nama_produk']); ?>" 
+              class="img-front">
 
-                    <!-- Nama produk -->
-                    <h4><?= $product['nama_produk']; ?></h4>
+            <!-- Gambar hover -->
+            <img 
+              src="<?= BASEURL; ?>/img/<?= htmlspecialchars($p['gambar2'] ?? $p['gambar']); ?>" 
+              alt="<?= htmlspecialchars($p['nama_produk']); ?>" 
+              class="img-back">
 
-                    <!-- Harga produk, diformat ribuan -->
-                    <p>Rp. <?= number_format($product['harga'], 0, ',', '.'); ?></p>
+            <!-- Badge diskon -->
+            <?php if (!empty($p['diskon']) && $p['diskon'] == 1): ?>
+              <div class="discount-badge"><?= htmlspecialchars($p['diskon_persen']); ?>%</div>
+            <?php endif; ?>
+          </div>
 
-                    <!-- Tombol detail menuju halaman detail produk berdasarkan ID -->
-                    <a href="<?= BASEURL; ?>/Produk/detail/<?= $product['id']; ?>" class="btn">Detail</a>
-                </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <!-- Pesan kalau tidak ada produk -->
-            <p style="text-align:center;">Belum ada produk tersedia.</p>
-        <?php endif; ?>
+          <div class="info">
+            <h5 class="name"><?= htmlspecialchars($p['nama_produk']); ?></h5>
+
+            <?php if (!empty($p['diskon']) && $p['diskon'] == 1): ?>
+              <p class="price">
+                Rp <?= number_format($p['harga'], 0, ',', '.'); ?>
+                <span class="old">
+                  Rp <?= number_format($p['harga'] / (1 - $p['diskon_persen'] / 100), 0, ',', '.'); ?>
+                </span>
+              </p>
+            <?php else: ?>
+              <p class="price">Rp <?= number_format($p['harga'], 0, ',', '.'); ?></p>
+            <?php endif; ?>
+          </div>
+        </div>
+      <?php endforeach; ?>
     </div>
+
+    <!-- PAGINATION -->
+    <?php if (!empty($data['total_pages']) && $data['total_pages'] > 1): ?>
+      <div class="pagination">
+        <!-- Tombol Previous -->
+        <?php if ($data['current_page'] > 1): ?>
+          <a href="<?= BASEURL; ?>/produk/index/<?= $data['current_page'] - 1; ?>" class="page-btn">←</a>
+        <?php endif; ?>
+
+        <!-- Nomor Halaman -->
+        <?php for ($i = 1; $i <= $data['total_pages']; $i++): ?>
+          <a href="<?= BASEURL; ?>/produk/index/<?= $i; ?>" 
+             class="page-number <?= $i == $data['current_page'] ? 'active' : ''; ?>">
+            <?= $i; ?>
+          </a>
+        <?php endfor; ?>
+
+        <!-- Tombol Next -->
+        <?php if ($data['current_page'] < $data['total_pages']): ?>
+          <a href="<?= BASEURL; ?>/produk/index/<?= $data['current_page'] + 1; ?>" class="page-btn">→</a>
+        <?php endif; ?>
+      </div>
+    <?php endif; ?>
+
+  <?php endif; ?>
 </div>

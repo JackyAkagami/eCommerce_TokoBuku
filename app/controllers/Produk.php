@@ -1,55 +1,52 @@
 <?php
-// Kelas Produk adalah controller untuk mengatur logika terkait produk
-class Produk extends Controller
-{
+// Controller untuk mengatur logika produk
+class Produk extends Controller {
     private $produkModel;
-    private $kategoriModel;
 
-    // Constructor dijalankan saat objek Produk dibuat
-    // Digunakan untuk memanggil model Produk_model agar bisa diakses di controller ini
-    public function __construct()
-    {
+    // Constructor: dijalankan otomatis saat controller dipanggil
+    public function __construct() {
+        // Panggil model Produk_model agar bisa digunakan di semua method
         $this->produkModel = $this->model('Produk_model');
-        $this->kategoriModel = $this->model('Kategori_model'); // Tambahkan model kategori
     }
 
-    // Method index untuk menampilkan daftar semua produk
-    public function index($kategori_id = null)
-    {
-        $kategori_id = $kategori_id ?? '';
+    // ===============================
+    //  HALAMAN DAFTAR PRODUK + PAGINATION
+    // ===============================
+    public function index($page = 1) {
+        $limit = 15; // 3 kolom × 5 baris per halaman
+        $offset = ($page - 1) * $limit;
 
-        $data['categories'] = $this->kategoriModel->getAllCategories();
+        // Hitung total produk
+        $totalProduk = $this->produkModel->getTotalProduk();
+        $totalPages = ceil($totalProduk / $limit);
 
-        if ($kategori_id) {
-            $data['products'] = $this->produkModel->getProductsByCategory($kategori_id);
-        } else {
-            $data['products'] = $this->produkModel->getAllProducts();
-        }
+        // Ambil produk sesuai halaman aktif
+        $data['products'] = $this->produkModel->getProdukPaginated($limit, $offset);
 
-        $data['selected_kategori'] = $kategori_id;
+        // Data tambahan untuk pagination dan judul
+        $data['current_page'] = $page;
+        $data['total_pages'] = $totalPages;
+        $data['title'] = 'Daftar Produk';
 
+        // Tampilkan halaman dengan urutan view
         $this->view('templates/header', $data);
         $this->view('produk/index', $data);
         $this->view('templates/footer');
     }
 
-
-
-    // Method detail untuk menampilkan detail dari sebuah produk berdasarkan ID
-    public function detail($id)
-    {
-        // Judul halaman
+    // ===============================
+    //  HALAMAN DETAIL PRODUK
+    // ===============================
+    public function detail($id) {
         $data['title'] = 'Detail Produk';
-
-        // Ambil data produk sesuai ID dari model
         $data['product'] = $this->produkModel->getProductById($id);
 
-        // Jika produk tidak ditemukan, tampilkan pesan error
         if (!$data['product']) {
-            die("Produk tidak ditemukan.");
+            // Jika tidak ada produk dengan ID tersebut
+            die("❌ Produk tidak ditemukan.");
         }
 
-        // Load bagian header, konten detail produk, dan footer
+        // Tampilkan detail produk
         $this->view('templates/header', $data);
         $this->view('produk/detail', $data);
         $this->view('templates/footer');
