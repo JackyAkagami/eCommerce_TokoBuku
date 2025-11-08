@@ -1,30 +1,43 @@
 <?php
 // Kelas Produk adalah controller untuk mengatur logika terkait produk
-class Produk extends Controller {
+class Produk extends Controller
+{
     private $produkModel;
+    private $kategoriModel;
 
     // Constructor dijalankan saat objek Produk dibuat
     // Digunakan untuk memanggil model Produk_model agar bisa diakses di controller ini
-    public function __construct() {
+    public function __construct()
+    {
         $this->produkModel = $this->model('Produk_model');
+        $this->kategoriModel = $this->model('Kategori_model'); // Tambahkan model kategori
     }
 
     // Method index untuk menampilkan daftar semua produk
-    public function index() {
-        // Judul halaman
-        $data['title'] = 'Daftar Produk';
+    public function index($kategori_id = null)
+    {
+        $kategori_id = $kategori_id ?? '';
 
-        // Ambil semua produk dari model
-        $data['products'] = $this->produkModel->getAllProducts();
+        $data['categories'] = $this->kategoriModel->getAllCategories();
 
-        // Load bagian header, konten utama (daftar produk), dan footer
+        if ($kategori_id) {
+            $data['products'] = $this->produkModel->getProductsByCategory($kategori_id);
+        } else {
+            $data['products'] = $this->produkModel->getAllProducts();
+        }
+
+        $data['selected_kategori'] = $kategori_id;
+
         $this->view('templates/header', $data);
         $this->view('produk/index', $data);
         $this->view('templates/footer');
     }
 
+
+
     // Method detail untuk menampilkan detail dari sebuah produk berdasarkan ID
-    public function detail($id) {
+    public function detail($id)
+    {
         // Judul halaman
         $data['title'] = 'Detail Produk';
 
