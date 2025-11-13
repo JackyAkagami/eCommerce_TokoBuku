@@ -19,9 +19,6 @@
           akan meningkatkan kedekatan dengan Sang Pencipta.
         </p>
       </div>
-      <div class="about-image">
-        <img src="<?= BASEURL; ?>/img/about-store.jpg" alt="About Nadi Bookstore">
-      </div>
     </div>
 
     <div class="about-vision">

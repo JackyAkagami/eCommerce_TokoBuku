@@ -10,7 +10,6 @@
     
     <!-- Artikel 1 -->
     <div class="news-card" style="background:#fff; border:1px solid #eee; border-radius:8px; overflow:hidden;">
-      <img src="<?= BASEURL; ?>/img/news1.jpg" alt="News 1" style="width:100%; height:220px; object-fit:cover;">
       <div style="padding:18px;">
         <h3 style="font-size:18px; font-weight:600; margin-bottom:10px;">The Importance of Reading the Qur'an Daily</h3>
         <p style="font-size:14px; color:#555; margin-bottom:15px;">Reading the Qur'an brings peace and guides us toward a better life...</p>
@@ -20,7 +19,6 @@
 
     <!-- Artikel 2 -->
     <div class="news-card" style="background:#fff; border:1px solid #eee; border-radius:8px; overflow:hidden;">
-      <img src="<?= BASEURL; ?>/img/news2.jpg" alt="News 2" style="width:100%; height:220px; object-fit:cover;">
       <div style="padding:18px;">
         <h3 style="font-size:18px; font-weight:600; margin-bottom:10px;">Finding Calm Through Prayer Routines</h3>
         <p style="font-size:14px; color:#555; margin-bottom:15px;">Prayer is not just worship — it is a way to find peace in everyday chaos...</p>
@@ -30,7 +28,6 @@
 
     <!-- Artikel 3 -->
     <div class="news-card" style="background:#fff; border:1px solid #eee; border-radius:8px; overflow:hidden;">
-      <img src="<?= BASEURL; ?>/img/news3.jpg" alt="News 3" style="width:100%; height:220px; object-fit:cover;">
       <div style="padding:18px;">
         <h3 style="font-size:18px; font-weight:600; margin-bottom:10px;">Choosing the Right Prayer Equipment</h3>
         <p style="font-size:14px; color:#555; margin-bottom:15px;">Comfort and quality are essential for creating a meaningful prayer experience...</p>

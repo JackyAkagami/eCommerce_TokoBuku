@@ -6,8 +6,8 @@
             
             <!-- Kolom 1: Navigasi utama -->
             <div class="footer-col">
-                <p><a href="#">Shop</a></p>
-                <p><a href="#">News</a></p>
+                <p><a href="<?= BASEURL; ?>/produk">Shop</a></p>
+                <p><a href="<?= BASEURL; ?>/news">News</a></p>
                 <p><a href="#">Cart</a></p>
                 <p><a href="#">Profile</a></p>
             </div>
