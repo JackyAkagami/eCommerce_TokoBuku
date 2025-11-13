@@ -11,7 +11,7 @@
         <ul>
           <li><i class="fas fa-map-marker-alt"></i> Cibubur Indah 3 Jalan Jambore Raya Blok B No.8 RT.5, Jl. Jambore No.8, RT.5/RW.11, Cibubur, Kec. Ciracas, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13720</li>
           <li><i class="fas fa-phone"></i> +62-819-1378-1294</li>
-          <li><i class="fas fa-envelope"></i> support@nadibookstore.com</li>
+          <li><i class="fas fa-envelope"></i>TokoNadiBerkah@gmail.com</li>
           <li><i class="fas fa-clock"></i> Senin - Sabtu: 08.00 - 20.00</li>
         </ul>
       </div>

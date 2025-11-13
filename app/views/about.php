@@ -8,15 +8,28 @@
     <div class="about-content">
       <div class="about-text">
         <p>
-          Nadi Bookstore adalah toko yang berdedikasi menyediakan perlengkapan ibadah berkualitas, 
-          termasuk Al-Qur’an, sajadah, mukena, dan buku-buku Islami. 
-          Kami hadir untuk mendukung perjalanan spiritual setiap pelanggan dengan menghadirkan produk 
-          yang nyaman, indah, dan bermakna.
+          Nadi Bookstore adalah toko yang berdedikasi menyediakan berbagai perlengkapan ibadah dan literasi Islami berkualitas tinggi. 
+          Kami menghadirkan beragam pilihan produk seperti Al-Qur’an, sajadah, mukena, tasbih, hingga buku-buku bernuansa Islami yang 
+          menginspirasi dan menenangkan hati. Setiap produk yang kami tawarkan dipilih dengan cermat agar mampu mendukung kenyamanan 
+          dan kekhusyukan dalam beribadah.
         </p><br>
         <p>
-          Sejak berdiri, Nadi Bookstore berkomitmen memberikan pelayanan terbaik dan menjadi bagian dari 
-          kehidupan ibadah masyarakat Indonesia. Kami percaya bahwa kenyamanan dalam beribadah 
-          akan meningkatkan kedekatan dengan Sang Pencipta.
+          Sejak awal berdiri, Nadi Bookstore berkomitmen untuk memberikan pelayanan terbaik kepada setiap pelanggan. 
+          Kami percaya bahwa kualitas produk yang baik harus diiringi dengan kehangatan pelayanan, sehingga setiap 
+          kunjungan ke Nadi Bookstore menjadi pengalaman yang berkesan dan bermakna. Dengan semangat berbagi kebaikan, 
+          kami terus berinovasi dalam menyediakan produk yang tidak hanya indah secara tampilan, tetapi juga memiliki 
+          nilai spiritual yang mendalam.
+        </p><br>
+        <p>
+          Kami juga memahami bahwa kebutuhan masyarakat terhadap perlengkapan ibadah dan bacaan Islami terus berkembang. 
+          Oleh karena itu, Nadi Bookstore senantiasa berusaha mengikuti perkembangan zaman dengan menghadirkan 
+          layanan yang modern, mudah diakses, dan terpercaya. Visi kami adalah menjadi sahabat terbaik bagi setiap 
+          individu dalam menumbuhkan kecintaan terhadap ibadah dan ilmu pengetahuan Islam.
+        </p><br>
+        <p>
+          Melalui setiap halaman buku dan setiap helai sajadah, kami berharap Nadi Bookstore dapat menjadi bagian dari 
+          perjalanan spiritual Anda, membantu mendekatkan diri kepada Sang Pencipta dengan penuh keikhlasan dan ketenangan. 
+          Terima kasih telah mempercayakan kebutuhan ibadah Anda kepada kami.
         </p>
       </div>
     </div>
@@ -27,8 +40,10 @@
         <div class="vision">
           <h4>Vision</h4><br>
           <p>
-            Menjadi toko perlengkapan ibadah terdepan yang menginspirasi dan mendukung umat 
-            dalam memperdalam nilai spiritual.
+            Menjadi toko perlengkapan ibadah terdepan yang tidak hanya menyediakan produk berkualitas, 
+            tetapi juga menginspirasi dan mendukung umat dalam memperdalam nilai-nilai spiritual. 
+            Nadi Bookstore bertekad menjadi sahabat terpercaya dalam setiap langkah menuju kehidupan 
+            yang lebih beriman, penuh makna, dan berlandaskan kebaikan.
           </p>
         </div>
         <div class="mission">

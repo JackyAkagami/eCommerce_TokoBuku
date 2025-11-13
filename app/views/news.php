@@ -11,8 +11,8 @@
     <!-- Artikel 1 -->
     <div class="news-card" style="background:#fff; border:1px solid #eee; border-radius:8px; overflow:hidden;">
       <div style="padding:18px;">
-        <h3 style="font-size:18px; font-weight:600; margin-bottom:10px;">The Importance of Reading the Qur'an Daily</h3>
-        <p style="font-size:14px; color:#555; margin-bottom:15px;">Reading the Qur'an brings peace and guides us toward a better life...</p>
+        <h3 style="font-size:18px; font-weight:600; margin-bottom:10px;">Pentingnya Membaca Al-Qur'an Setiap Hari</h3>
+        <p style="font-size:14px; color:#555; margin-bottom:15px;">Membaca Al-Qur'an setiap hari merupakan amalan yang sangat mulia dan penuh...</p>
         <a href="#" class="read-more" data-article="1" style="color:#586053; font-weight:bold; font-size:13px; text-decoration:underline;">Read More</a>
       </div>
     </div>
@@ -20,8 +20,8 @@
     <!-- Artikel 2 -->
     <div class="news-card" style="background:#fff; border:1px solid #eee; border-radius:8px; overflow:hidden;">
       <div style="padding:18px;">
-        <h3 style="font-size:18px; font-weight:600; margin-bottom:10px;">Finding Calm Through Prayer Routines</h3>
-        <p style="font-size:14px; color:#555; margin-bottom:15px;">Prayer is not just worship — it is a way to find peace in everyday chaos...</p>
+        <h3 style="font-size:18px; font-weight:600; margin-bottom:10px;">Menemukan Ketenangan Melalui Rutinitas Salat</h3>
+        <p style="font-size:14px; color:#555; margin-bottom:15px;">Salat harian bukan hanya sekadar kewajiban spiritual, tetapi juga menjadi cara terbaik...</p>
         <a href="#" class="read-more" data-article="2" style="color:#586053; font-weight:bold; font-size:13px; text-decoration:underline;">Read More</a>
       </div>
     </div>
@@ -29,8 +29,8 @@
     <!-- Artikel 3 -->
     <div class="news-card" style="background:#fff; border:1px solid #eee; border-radius:8px; overflow:hidden;">
       <div style="padding:18px;">
-        <h3 style="font-size:18px; font-weight:600; margin-bottom:10px;">Choosing the Right Prayer Equipment</h3>
-        <p style="font-size:14px; color:#555; margin-bottom:15px;">Comfort and quality are essential for creating a meaningful prayer experience...</p>
+        <h3 style="font-size:18px; font-weight:600; margin-bottom:10px;">Memilih Perlengkapan Salat yang Tepat</h3>
+        <p style="font-size:14px; color:#555; margin-bottom:15px;">Memilih perlengkapan salat yang nyaman dan bersih merupakan hal penting untuk...</p>
         <a href="#" class="read-more" data-article="3" style="color:#586053; font-weight:bold; font-size:13px; text-decoration:underline;">Read More</a>
       </div>
     </div>
@@ -107,46 +107,43 @@
 <script>
 const articles = {
   1: {
-    title: "The Importance of Reading the Qur'an Daily",
-    content: `Reading the Qur'an every day strengthens our connection with Allah, increases our understanding of His words, and brings peace to the heart. Even just a few verses a day can have a great impact on our life, reminding us of patience, gratitude, and purpose.<br><br>
-    Consistency is key — even when we’re busy, dedicating a short time for recitation helps us reflect and grow spiritually. Moreover, reading the Qur'an regularly improves our focus, language skills, and emotional calmness. It serves as daily guidance in making moral and life decisions.`
+    title: "Pentingnya Membaca Al-Qur'an Setiap Hari",
+    content: `Membaca Al-Qur'an setiap hari merupakan amalan yang sangat mulia dan penuh keberkahan. Dengan membaca kalam Allah secara rutin, hati kita menjadi tenang, pikiran lebih jernih, dan jiwa senantiasa terhubung dengan Sang Pencipta. Setiap ayat yang dibaca bukan hanya membawa pahala, tetapi juga menjadi cahaya yang menuntun kita dalam menjalani kehidupan sehari-hari.<br><br>
+    Meskipun hanya membaca beberapa ayat setiap hari, hal tersebut dapat memberikan pengaruh besar, terhadap keimanan dan ketenangan batin. Melalui Al-Qur'an, kita diajarkan tentang kesabaran, rasa syukur, ketulusan, dan tujuan hidup yang sebenarnya. Kebiasaan membaca Al-Qur'an membantu kita untuk lebih memahami makna kehidupan dan mendekatkan diri kepada Allah SWT.<br><br>
+    Konsistensi adalah kunci utama. Di tengah kesibukan, meluangkan waktu sejenak untuk membaca dan merenungi makna ayat-ayat suci akan menumbuhkan kekuatan spiritual yang luar biasa. Selain itu, membaca Al-Qur'an secara teratur juga dapat meningkatkan kemampuan berbahasa Arab, memperdalam pemahaman agama, serta memberikan ketenangan emosional dalam menghadapi berbagai ujian hidup.<br><br>
+    Menjadikan Al-Qur'an sebagai bagian dari rutinitas harian bukan hanya bentuk ibadah, tetapi juga jalan untuk menemukan kedamaian sejati dan petunjuk dalam setiap langkah kehidupan. Dengan membaca dan mengamalkan isi Al-Qur'an, kita senantiasa diingatkan untuk hidup dengan penuh cinta, hikmah, dan ketaatan kepada Allah SWT.`
   },
   2: {
-    title: "Finding Calm Through Prayer Routines",
-    content: `Daily prayers not only fulfill our spiritual duties but also provide structured moments of reflection and calmness. By praying on time and with sincerity, we can release stress, regain focus, and maintain a positive state of mind.<br><br>
-    Establishing a consistent prayer routine can improve time management and strengthen self-discipline. It’s not only an act of worship but also a way to nurture mental and emotional balance, offering a sacred pause in the middle of our busy daily life.`
+    title: "Menemukan Ketenangan Melalui Rutinitas Salat",
+    content: `Salat harian bukan hanya sekadar kewajiban spiritual, tetapi juga menjadi cara terbaik untuk menemukan ketenangan dan keseimbangan dalam hidup. Dengan melaksanakan salat tepat waktu dan penuh keikhlasan, hati kita menjadi lebih tenang, pikiran lebih fokus, dan jiwa terasa lebih damai. Salat membantu kita melepaskan penat, mengurangi stres, serta mengingatkan kembali bahwa segala urusan kehidupan sebaiknya disandarkan kepada Allah SWT.<br><br>
+    Menjadikan salat sebagai rutinitas yang konsisten juga melatih kedisiplinan diri dan kemampuan mengatur waktu dengan baik. Setiap waktu salat merupakan jeda berharga yang memberi kesempatan untuk berhenti sejenak dari kesibukan dunia, merenungkan makna kehidupan, serta memperbarui semangat untuk terus berbuat kebaikan. Dengan begitu, salat bukan hanya ibadah, tetapi juga bentuk terapi batin yang menenangkan hati dan memperkuat jiwa.<br><br>
+    Melalui salat, kita belajar tentang ketundukan, kesabaran, dan keikhlasan. Setiap gerakan dan bacaan di dalamnya memiliki makna mendalam yang menuntun kita menuju kehidupan yang lebih damai, penuh rasa syukur, dan dekat dengan Allah SWT. Menjadikan salat sebagai pusat dari aktivitas harian akan membawa keberkahan serta menjaga keseimbangan mental, emosional, dan spiritual kita sepanjang hari.`
   },
   3: {
-    title: "Choosing the Right Prayer Equipment",
-    content: `Choosing comfortable and clean prayer equipment, such as soft prayer mats and garments, enhances our worship experience. The right equipment helps us maintain focus and humility, creating a peaceful environment during prayer.<br><br>
-    A well-made sajadah with quality materials provides comfort for sujud and prolongs its use. Similarly, mukena or sarung that are light and breathable support better concentration during prayer. At Nadi Bookstore, we believe that each piece of worship gear holds not just physical value but spiritual meaning.`
+    title: "Memilih Perlengkapan Salat yang Tepat",
+    content: `Memilih perlengkapan salat yang nyaman dan bersih merupakan hal penting untuk meningkatkan kekhusyukan dalam beribadah. Perlengkapan seperti sajadah yang lembut, mukena atau sarung yang ringan, serta Al-Qur’an yang rapi dan terawat dapat menciptakan suasana tenang dan membantu kita lebih fokus saat beribadah kepada Allah SWT. Kenyamanan dalam beribadah bukan hanya soal fisik, tetapi juga membantu menumbuhkan rasa khusyuk dan ketenangan hati.<br><br>
+    Sajadah yang dibuat dari bahan berkualitas akan memberikan rasa nyaman saat sujud, serta lebih awet digunakan dalam jangka panjang. Begitu pula dengan mukena atau sarung yang ringan dan mudah menyerap keringat, akan mendukung konsentrasi dan membuat ibadah terasa lebih tenang. Perlengkapan ibadah yang baik bukan hanya memperindah tampilan, tetapi juga mencerminkan rasa hormat dan kesungguhan kita dalam beribadah.<br><br>
+    Di Nadi Bookstore, kami percaya bahwa setiap perlengkapan ibadah memiliki makna spiritual tersendiri. Setiap helai kain, setiap jahitan, dan setiap motif yang kami pilih mengandung niat untuk menghadirkan keindahan dalam kesederhanaan. Kami ingin membantu setiap umat Muslim menemukan kenyamanan dan ketenangan dalam setiap gerakan ibadahnya, sehingga salat tidak hanya menjadi rutinitas, tetapi juga momen berharga untuk mendekatkan diri kepada Sang Pencipta.`
   }
 };
+
+const modal = document.getElementById('newsModal');
+const modalTitle = document.getElementById('modalTitle');
+const modalContent = document.getElementById('modalContent');
+const closeModal = document.getElementById('closeModal');
 
 document.querySelectorAll('.read-more').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
     const id = e.target.getAttribute('data-article');
-    document.getElementById('modalTitle').innerHTML = articles[id].title;
-    document.getElementById('modalContent').innerHTML = articles[id].content;
-    const modal = document.getElementById('newsModal');
+    modalTitle.innerHTML = articles[id].title;
+    modalContent.innerHTML = articles[id].content;
     modal.classList.add('show');
   });
 });
 
-document.getElementById('closeModal').addEventListener('click', () => {
-  const modal = document.getElementById('newsModal');
-  modal.classList.remove('show');
-  setTimeout(() => modal.style.display = 'none', 400);
-});
-
-const modal = document.getElementById('newsModal');
-modal.addEventListener('animationend', () => {
-  if (!modal.classList.contains('show')) {
-    modal.style.display = 'none';
-  } else {
-    modal.style.display = 'flex';
-  }
+closeModal.addEventListener('click', () => {
+  modal.classList.remove('show');  
 });
 </script>
 
