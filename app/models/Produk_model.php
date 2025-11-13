@@ -157,4 +157,40 @@ public function getLatestProducts($limit = 3) {
     return $this->db->resultSet();
 }
 
+// Hitung total produk per kategori (untuk pagination)
+public function getTotalProdukByCategory($kategoriId) {
+    $this->db->query("SELECT COUNT(*) AS total FROM products WHERE id_kategori = :id_kategori");
+    $this->db->bind(':id_kategori', $kategoriId);
+    $result = $this->db->single();
+    return $result ? $result['total'] : 0;
+}
+
+// Ambil produk per halaman per kategori
+public function getProdukPaginatedByCategory($limit, $offset, $kategoriId) {
+    $this->db->query("
+        SELECT p.*, c.nama_kategori 
+        FROM products p
+        LEFT JOIN categories c ON p.id_kategori = c.id
+        WHERE p.id_kategori = :id_kategori
+        ORDER BY p.id DESC
+        LIMIT :limit OFFSET :offset
+    ");
+    $this->db->bind(':id_kategori', $kategoriId);
+    $this->db->bind(':limit', (int)$limit);
+    $this->db->bind(':offset', (int)$offset);
+    return $this->db->resultSet();
+}
+
+// Ambil daftar kategori unik yang ada di produk (id dan nama kategori)
+public function getCategoriesUsed() {
+    $this->db->query("
+        SELECT DISTINCT c.id, c.nama_kategori 
+        FROM categories c
+        JOIN products p ON p.id_kategori = c.id
+        ORDER BY c.nama_kategori ASC
+    ");
+    return $this->db->resultSet();
+}
+
+
 }

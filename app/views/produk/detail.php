@@ -1,26 +1,105 @@
-<div class="container">
-    <!-- Judul halaman detail produk -->
-    <h2><?= $data['product']['nama_produk']; ?></h2>
+<div class="container product-detail">
 
-    <!-- Gambar produk -->
-    <!-- Jika produk tidak punya gambar, tampilkan gambar default 'noimage.jpg' -->
-    <img src="<?= BASEURL; ?>/img/<?= $data['product']['gambar'] ?: 'noimage.jpg'; ?>" 
-         alt="<?= $data['product']['nama_produk']; ?>" width="300">
+    <!-- Tombol Kembali di kanan atas -->
+    <div class="back-button-wrapper">
+        <a href="<?= BASEURL; ?>/produk" class="btn-back">Kembali</a>
+    </div>
 
-    <!-- Informasi kategori produk -->
-    <!-- Jika tidak ada kategori, tampilkan '-' -->
-    <p><strong>Kategori:</strong> <?= $data['product']['nama_kategori'] ?? '-'; ?></p>
+    <!-- Nama produk sebagai judul -->
+    <h2 class="product-title"><?= htmlspecialchars($data['product']['nama_produk']); ?></h2>
 
-    <!-- Informasi deskripsi produk -->
-    <p><strong>Deskripsi:</strong> <?= $data['product']['deskripsi']; ?></p>
+    <div class="detail-content">
+        <!-- Gambar produk -->
+        <div class="image-wrapper">
+            <img src="<?= BASEURL; ?>/img/<?= htmlspecialchars($data['product']['gambar']); ?>"
+                alt="<?= htmlspecialchars($data['product']['nama_produk']); ?>">
+        </div>
 
-    <!-- Informasi harga produk -->
-    <!-- Format harga dalam format ribuan (contoh: 10.000) -->
-    <p><strong>Harga:</strong> Rp. <?= number_format($data['product']['harga'], 0, ',', '.'); ?></p>
-
-    <!-- Informasi stok produk -->
-    <p><strong>Stok:</strong> <?= $data['product']['stok']; ?></p>
-
-    <!-- Tombol kembali ke daftar produk -->
-    <a href="<?= BASEURL; ?>/Produk" class="btn">Kembali</a>
+        <!-- Info produk -->
+        <div class="info-wrapper">
+            <p><strong>Kategori:</strong> <?= htmlspecialchars($data['product']['nama_kategori']); ?></p>
+            <p><strong>Deskripsi:</strong> <?= nl2br(htmlspecialchars($data['product']['deskripsi'])); ?></p>
+            <p><strong>Harga:</strong> Rp <?= number_format($data['product']['harga'], 0, ',', '.'); ?></p>
+            <p><strong>Stok:</strong> <?= intval($data['product']['stok']); ?></p>
+        </div>
+    </div>
 </div>
+
+<style>
+    .product-detail {
+  max-width: 1000px;
+  margin: 40px auto 80px;
+  padding: 0 60px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Tombol kembali posisinya ke kanan atas */
+.back-button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+.btn-back {
+  padding: 8px 14px;
+  background-color: #586053;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.btn-back:hover {
+  background-color: #758064;
+}
+
+/* Judul produk */
+.product-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #444;
+}
+
+/* Container gambar dan info sejajar */
+.detail-content {
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+/* Gambar produk */
+.image-wrapper {
+  flex: 1 1 300px;
+  max-width: 420px;
+  background: #f7f7f7;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Info produk */
+.info-wrapper {
+  flex: 1 1 320px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.info-wrapper p {
+  margin-bottom: 18px;
+}
+
+.info-wrapper strong {
+  color: #586053;
+}
+</style>
