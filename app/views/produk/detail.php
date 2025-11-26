@@ -17,6 +17,10 @@
 
         <!-- Info produk -->
         <div class="info-wrapper">
+          <a href="<?= BASEURL; ?>/cart/add/<?= $data['product']['id']; ?>"
+   class="btn-add-detail">
+   + Tambah ke Keranjang
+</a>
             <p><strong>Kategori:</strong> <?= htmlspecialchars($data['product']['nama_kategori']); ?></p>
             <p><strong>Deskripsi:</strong> <?= nl2br(htmlspecialchars($data['product']['deskripsi'])); ?></p>
             <p><strong>Harga:</strong> Rp <?= number_format($data['product']['harga'], 0, ',', '.'); ?></p>
@@ -101,5 +105,21 @@
 
 .info-wrapper strong {
   color: #586053;
+}
+
+.btn-add-detail {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 18px;
+  background: #586053;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.btn-add-detail:hover {
+  background: #758064;
 }
 </style>

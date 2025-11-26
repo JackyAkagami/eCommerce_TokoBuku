@@ -42,8 +42,19 @@
           Rp <?= number_format($p['harga'] / (1 - $p['diskon_persen'] / 100), 0, ',', '.'); ?>
         </span>
       </p>
+      <a href="<?= BASEURL; ?>/cart/add/<?= $p['id']; ?>" 
+   class="btn-cart"
+   onclick="event.stopPropagation();">
+   + Keranjang
+</a>
+
     <?php else: ?>
       <p class="price">Rp <?= number_format($p['harga'], 0, ',', '.'); ?></p>
+      <a href="<?= BASEURL; ?>/cart/add/<?= $p['id']; ?>" 
+   class="btn-cart"
+   onclick="event.stopPropagation();">
+   + Keranjang
+</a>
     <?php endif; ?>
   </div>
 </div>
@@ -116,4 +127,21 @@
   color: inherit;
 }
 
+.btn-cart {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 14px;
+  background: #586053;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 20;
+  position: relative;
+}
+
+.btn-cart:hover {
+  background: #758064;
+}
 </style>

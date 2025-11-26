@@ -20,7 +20,7 @@
 
             <!-- Kolom 3: Kontak & alamat -->
             <div class="footer-col">
-                <p>📞 +62-819-1378-1294</p>
+                <p>📞 +62-816-744-833</p>
                 <p>2972 Westheimer Rd.<br>Santa Ana, Illinois 85486</p>
             </div>
 
