@@ -127,7 +127,7 @@ class Admin extends Controller {
 
         // Redirect kembali ke dashboard admin
         header('Location: ' . BASEURL . '/admin/dashboard');
-        exit;
+        exit; 
     }
 }
 

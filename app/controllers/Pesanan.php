@@ -5,8 +5,10 @@ class Pesanan extends Controller {
     // Constructor dijalankan otomatis saat objek Pesanan dibuat
     public function __construct() {
         // Mulai session untuk mengecek apakah user sudah login
-        session_start();
-
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        
         // Validasi: hanya admin yang boleh mengakses controller ini
         if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
             // Jika bukan admin, arahkan kembali ke halaman Home

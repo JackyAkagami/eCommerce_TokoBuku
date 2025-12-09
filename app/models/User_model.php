@@ -54,4 +54,31 @@ class User_model {
         // Eksekusi query update
         return $this->db->execute();
     }
+
+    // Ambil user berdasarkan ID (untuk halaman profil)
+public function getUserById($id) {
+    $this->db->query("SELECT * FROM users WHERE id = :id");
+    $this->db->bind(':id', $id);
+    return $this->db->single();
+}
+
+// Update data profil user
+public function updateProfile($id, $data) {
+    $this->db->query("
+        UPDATE users 
+        SET nama   = :nama,
+            email  = :email,
+            alamat = :alamat,
+            no_hp  = :no_hp
+        WHERE id = :id
+    ");
+    $this->db->bind(':nama',   $data['nama']);
+    $this->db->bind(':email',  $data['email']);
+    $this->db->bind(':alamat', $data['alamat']);
+    $this->db->bind(':no_hp',  $data['no_hp']);
+    $this->db->bind(':id',     $id);
+
+    return $this->db->execute();
+}
+
 }
