@@ -97,10 +97,11 @@
       <a href="<?= BASEURL; ?>/pesanan"><i class="bi bi-clock-history"></i> Order history</a>
       <a href="#"><i class="bi bi-cash-coin"></i> Finance</a>
       <a href="#"><i class="bi bi-clipboard-data"></i> Report</a>
-      <a href="#"><i class="bi bi-gear"></i> Access management</a>
     </div>
     <div class="bottom">
-      <a href="#"><i class="bi bi-sliders"></i> Settings</a>
+      <button type="button" class="btn-secondary-link" onclick="window.location.href='<?= BASEURL; ?>/home'">
+                        Kembali ke Beranda
+       </button>
       <a href="<?= BASEURL; ?>/auth/logout"><i class="bi bi-box-arrow-right"></i> Logout</a>
     </div>
   </div>
