@@ -95,7 +95,7 @@
       <h3>Nadi Admin</h3>
       <a href="<?= BASEURL; ?>/admin/dashboard"><i class="bi bi-box"></i> Products</a>
       <a href="<?= BASEURL; ?>/pesanan"><i class="bi bi-clock-history"></i> Order history</a>
-      <a href="#"><i class="bi bi-cash-coin"></i> Finance</a>
+      <a href="<?= BASEURL; ?>/finance"><i class="bi bi-cash-coin"></i> Finance</a>
       <a href="#"><i class="bi bi-clipboard-data"></i> Report</a>
       <a href="#"><i class="bi bi-gear"></i> Access management</a>
     </div>
