@@ -69,44 +69,69 @@ class Checkout extends Controller
     }
 
     public function process()
-    {
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header("Location: " . BASEURL . "/checkout");
-            exit;
-        }
-
-        // kamu bisa bedakan: pembayaran dari cart atau dari single
-        // misal pakai hidden input "mode"
-        $metode = $_POST['metode_pembayaran'];
-
-        // default: ambil dari cart
-        $cart = $_SESSION['cart'] ?? [];
-
-        // kalau mode single, ambil dari session single_checkout
-        if (isset($_POST['mode']) && $_POST['mode'] === 'single' && isset($_SESSION['single_checkout'])) {
-            $item = $_SESSION['single_checkout'];
-            $cart = [
-                [
-                    'harga' => $item['harga'],
-                    'qty'   => $item['qty']
-                ]
-            ];
-        }
-
-        // Hitung total
-        $total = 0;
-        foreach ($cart as $c) {
-            $total += $c['harga'] * $c['qty'];
-        }
-
-        // kosongkan keranjang setelah bayar
-        unset($_SESSION['cart']);
-        unset($_SESSION['single_checkout']);
-
-        header("Location: " . BASEURL . "/checkout/success");
+{
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        header("Location: " . BASEURL . "/checkout");
         exit;
     }
 
+    // ===== 1. AMBIL CART =====
+    $cart = $_SESSION['cart'] ?? [];
+
+    // mode single checkout
+    if (
+        isset($_POST['mode']) &&
+        $_POST['mode'] === 'single' &&
+        isset($_SESSION['single_checkout'])
+    ) {
+        $item = $_SESSION['single_checkout'];
+
+        $cart = [
+            [
+                'id'    => $item['id'],     // WAJIB
+                'harga' => $item['harga'],
+                'qty'   => $item['qty']
+            ]
+        ];
+    }
+
+    if (empty($cart)) {
+        header("Location: " . BASEURL . "/cart");
+        exit;
+    }
+
+    // ===== 2. HITUNG TOTAL =====
+    $total = 0;
+    foreach ($cart as $item) {
+        $total += $item['harga'] * $item['qty'];
+    }
+
+    // ===== 3. SIMPAN KE DATABASE =====
+    $pesananModel = $this->model('Pesanan_model');
+
+    $orderId = $pesananModel->createOrder(
+        $_SESSION['user']['id'],
+        $total,
+        'pending'
+    );
+
+    foreach ($cart as $item) {
+        $pesananModel->addOrderItem(
+            $orderId,
+            $item['id_produk'],     // id produk
+            $item['qty'],
+            $item['harga']
+        );
+    }
+
+    // ===== 4. BERSIHKAN SESSION =====
+    unset($_SESSION['cart']);
+    unset($_SESSION['single_checkout']);
+
+    // ===== 5. REDIRECT =====
+    header("Location: " . BASEURL . "/checkout/success");
+    exit;
+}
     public function success()
     {
         $this->view('checkout_success'); // kita buat file baru

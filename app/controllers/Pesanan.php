@@ -43,4 +43,18 @@ class Pesanan extends Controller {
         // Kirim data ke view untuk ditampilkan di halaman admin/pesanan_detail.php
         $this->view('admin/pesanan_detail', $data);
     }
+    
+    public function updateStatus()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $orderId = $_POST['order_id'];
+        $status  = $_POST['status'];
+
+        $this->model('Pesanan_model')->updateStatus($orderId, $status);
+
+        header("Location: " . BASEURL . "/pesanan/detail/" . $orderId);
+        exit;
+    }
+}
+
 }

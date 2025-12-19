@@ -51,13 +51,6 @@
       align-items: center;
       margin-bottom: 25px;
     }
-    .wallet-btn {
-      background-color: #333;
-      color: #fff;
-      border: none;
-      padding: 7px 20px;
-      border-radius: 8px;
-    }
     .card-box {
       border-radius: 12px;
       background-color: #fff;
@@ -100,148 +93,184 @@
     <!-- TOPBAR -->
     <div class="topbar">
       <h2>Finance Overview</h2>
-      <button class="wallet-btn">Connect Wallet</button>
     </div>
 
     <!-- FINANCE STATS -->
     <div class="row g-3">
       <div class="col-md-4">
         <div class="card-box">
-          <h6 class="text-muted">Income/Month</h6>
-          <h3>257,900%</h3>
+          <h6 class="text-muted">Income / Month</h6>
+          <h3>Rp <?= number_format($data['monthlyIncome'] ?? 0, 0, ',', '.') ?></h3>
         </div>
       </div>
 
       <div class="col-md-4">
         <div class="card-box">
-          <h6 class="text-muted">Total</h6>
-          <h3>$571,320</h3>
+          <h6 class="text-muted">Total Income</h6>
+          <h3>Rp <?= number_format($data['totalIncome'] ?? 0, 0, ',', '.') ?></h3>
         </div>
       </div>
 
       <div class="col-md-4">
         <div class="card-box">
-          <h6 class="text-muted">Your Earnings/Day</h6>
-          <h3>$0.00</h3>
+          <h6 class="text-muted">Income / Day</h6>
+          <h3>Rp <?= number_format($data['dailyIncome'] ?? 0, 0, ',', '.') ?></h3>
         </div>
       </div>
     </div>
 
     <!-- TARGET PENDAPATAN SECTION -->
-<h4 class="section-title">Target Pendapatan Bulanan</h4>
+    <h4 class="section-title">Target Pendapatan Bulanan</h4>
 
-<div class="row">
+    <div class="row">
 
-  <!-- Input Target -->
-  <div class="col-lg-8">
-    <div class="card-box">
-      <h5>Tetapkan Target Bulanan</h5>
-      <hr>
+      <!-- Input Target -->
+      <div class="col-lg-8">
+        <div class="card-box">
+          <h5>Tetapkan Target Bulanan</h5>
+          <hr>
 
-      <label class="form-label">Masukkan Target Pendapatan (Rp)</label>
-      <input type="number" class="form-control" placeholder="0">
+          <form action="<?= BASEURL ?>/finance/simpanTarget" method="post">
 
-      <button class="btn btn-dark mt-3 w-100">Simpan Target</button>
-    </div>
-  </div>
+            <label class="form-label mt-2">Pilih Bulan</label>
+            <select class="form-select" name="bulan" required>
+              <?php
+                for ($i = 1; $i <= 12; $i++) {
+                  $namaBulan = date('F', mktime(0,0,0,$i,1));
+                  echo "<option value='$i'>$namaBulan</option>";
+                }
+              ?>
+            </select><br>
 
-  <!-- Informasi Target -->
-  <div class="col-lg-4">
-    <div class="card-box">
-      <h5 class="mb-3">Progress Target</h5>
+            <label class="form-label">Masukkan Target Pendapatan (Rp)</label>
+            <input type="number" name="target" class="form-control" required>
 
-      <p class="mb-1">Pendapatan Saat Ini</p>
-      <h5>Rp 12.500.000</h5>
+            <button type="submit" class="btn btn-dark mt-3 w-100">
+              Simpan Target
+            </button>
 
-      <p class="mt-3 mb-1">Target Bulanan</p>
-      <h5>Rp 20.000.000</h5>
-
-      <p class="mt-3 mb-1">Pencapaian</p>
-      <h6>62.5%</h6>
-
-      <div class="progress mt-2" style="height: 10px;">
-        <div class="progress-bar bg-dark" style="width: 62.5%;"></div>
+          </form>
+        </div>
       </div>
 
-      <p class="mt-4 mb-1">Estimasi Tercapai</p>
-      <h6>Diperkirakan tercapai dalam 9 hari lagi</h6>
+      <!-- Informasi Target -->
+      <div class="col-lg-4">
+        <div class="card-box">
+          <h5 class="mb-3">Progress Target</h5>
 
+          <?php
+            $pendapatan = $data['monthlyIncome'] ?? 0;
+
+            // default aman
+            $target = 0;
+
+            // ambil target bulan & tahun sekarang
+            $bulanSekarang = date('n'); // 1–12
+            $tahunSekarang = date('Y');
+
+            if (!empty($data['targetBulanan'])) {
+              foreach ($data['targetBulanan'] as $row) {
+                if ($row['bulan'] == $bulanSekarang && $row['tahun'] == $tahunSekarang) {
+                  $target = (int)$row['target'];
+                  break;
+                }
+              }
+            }
+
+            // hindari division by zero
+            $persen = $target > 0 ? ($pendapatan / $target) * 100 : 0;
+          ?>
+          <p class="mb-1">Pendapatan Saat Ini</p>
+          <h5>Rp <?= number_format($pendapatan,0,',','.') ?></h5>
+
+          <p class="mt-3 mb-1">Target Bulanan</p>
+          <h5>Rp <?= number_format($target,0,',','.') ?></h5>
+
+          <p class="mt-3 mb-1">Pencapaian</p>
+          <h6><?= number_format($persen,1) ?>%</h6>
+
+          <div class="progress mt-2" style="height: 10px;">
+            <div class="progress-bar bg-dark" style="width: <?= min($persen,100) ?>%;"></div>
+          </div>
+
+          <p class="mt-4 mb-1">Estimasi Tercapai</p>
+          <h6>Diperkirakan tercapai dalam 15 hari lagi</h6>
+
+        </div>
+      </div>
     </div>
-  </div>
-
-</div>
-
 
     <!-- PENDAPATAN BULANAN SECTION -->
-<h4 class="section-title">Pendapatan Bulanan</h4>
+    <h4 class="section-title">Pendapatan Bulanan</h4>
 
-<div class="card-box">
-  <table class="table table-bordered text-center align-middle">
-    <thead>
-      <tr>
-        <th>Bulan</th>
-        <th>Pendapatan (Rp)</th>
-        <th>Target (Rp)</th>
-        <th>Selisih</th>
-        <th>Progres</th>
-        <th>Status</th>
-      </tr>
-    </thead>
+    <div class="card-box">
+      <table class="table table-bordered text-center align-middle">
+        <thead>
+          <tr>
+            <th>Bulan</th>
+            <th>Pendapatan (Rp)</th>
+            <th>Target (Rp)</th>
+            <th>Selisih</th>
+            <th>Progres</th>
+            <th>Status</th>
+          </tr>
+        </thead>
 
-    <tbody>
-      <?php 
-    
-      $dataPendapatan = [
-        ["Januari", 12500000, 20000000],
-        ["Februari", 18500000, 20000000],
-        ["Maret", 21000000, 20000000]
-      ];
+        <tbody>
+          <?php if (!empty($data['targetBulanan'])): ?>
+          <?php foreach ($data['targetBulanan'] as $row): ?>
 
-      foreach ($dataPendapatan as $d):
-        $bulan = $d[0];
-        $pendapatan = $d[1];
-        $target = $d[2];
-        $selisih = $pendapatan - $target;
-        $persen = $pendapatan / $target * 100;
+          <?php
+            $bulan       = date('F', mktime(0,0,0,$row['bulan'],1));
+            $pendapatan  = (int)$row['pendapatan'];
+            $target      = (int)$row['target'];
+            $selisih     = $pendapatan - $target;
+            $persen      = $target > 0 ? ($pendapatan / $target) * 100 : 0;
+          ?>
 
-        $status = $pendapatan >= $target ? "Tercapai" : "Belum";
-      ?>
+          <tr>
+            <td><?= $bulan ?> <?= $row['tahun'] ?></td>
 
-      <tr>
-        <td><?= $bulan ?></td>
-        <td>Rp <?= number_format($pendapatan, 0, ',', '.') ?></td>
-        <td>Rp <?= number_format($target, 0, ',', '.') ?></td>
+            <td>Rp <?= number_format($pendapatan,0,',','.') ?></td>
 
-        <td>
-          <?php if ($selisih >= 0): ?>
-            <span class="text-success">+Rp <?= number_format($selisih, 0, ',', '.') ?></span>
+            <td>Rp <?= number_format($target,0,',','.') ?></td>
+
+            <td>
+              <?php if ($selisih >= 0): ?>
+                <span class="text-success">+Rp <?= number_format($selisih,0,',','.') ?></span>
+              <?php else: ?>
+                <span class="text-danger">Rp <?= number_format($selisih,0,',','.') ?></span>
+              <?php endif; ?>
+            </td>
+
+            <td>
+              <div class="progress" style="height:10px;">
+                <div class="progress-bar bg-dark"
+                    style="width: <?= min($persen,100) ?>%;"></div>
+              </div>
+              <small><?= number_format($persen,1) ?>%</small>
+            </td>
+
+            <td>
+              <?php if ($pendapatan >= $target): ?>
+                <span class="badge bg-success">Tercapai</span>
+              <?php else: ?>
+                <span class="badge bg-warning text-dark">Belum</span>
+              <?php endif; ?>
+            </td>
+          </tr>
+
+          <?php endforeach; ?>
           <?php else: ?>
-            <span class="text-danger">Rp <?= number_format($selisih, 0, ',', '.') ?></span>
+
+          <tr>
+            <td colspan="6">Belum ada target pendapatan</td>
+          </tr>
+
           <?php endif; ?>
-        </td>
-
-        <td>
-          <div class="progress" style="height: 10px;">
-            <div class="progress-bar bg-dark" style="width: <?= $persen ?>%;"></div>
-          </div>
-          <small><?= number_format($persen, 1) ?>%</small>
-        </td>
-
-        <td>
-          <?php if ($status === "Tercapai"): ?>
-            <span class="badge bg-success">Tercapai</span>
-          <?php else: ?>
-            <span class="badge bg-warning text-dark">Belum</span>
-          <?php endif; ?>
-        </td>
-      </tr>
-
-      <?php endforeach; ?>
-    </tbody>
-  </table>
-</div>
-
-
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 

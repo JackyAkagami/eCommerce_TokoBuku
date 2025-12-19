@@ -8,8 +8,8 @@
             <div class="footer-col">
                 <p><a href="<?= BASEURL; ?>/produk">Shop</a></p>
                 <p><a href="<?= BASEURL; ?>/news">News</a></p>
-                <p><a href="#">Cart</a></p>
-                <p><a href="#">Profile</a></p>
+                <p><a href="<?= BASEURL; ?>/cart">Cart</a></p>
+                <p><a href="<?= BASEURL; ?>/profile">Profile</a></p>
             </div>
 
             <!-- Kolom 2: Informasi layanan -->

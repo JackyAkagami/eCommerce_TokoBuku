@@ -393,10 +393,10 @@ if ($isSingleMode && isset($data['item'])) {
                 <div class="bank-select">
                     <select name="bank_tujuan" id="bank_tujuan" required>
                         <option value="">Pilih Bank Tujuan</option>
-                        <option value="BCA">BCA - 1234 5678 90 (a/n PT Toko Online Indonesia)</option>
-                        <option value="Mandiri">Mandiri - 9876 5432 10 (a/n PT Toko Online Indonesia)</option>
-                        <option value="BNI">BNI - 4567 8901 23 (a/n PT Toko Online Indonesia)</option>
-                        <option value="BRI">BRI - 3210 9876 54 (a/n PT Toko Online Indonesia)</option>
+                        <option value="BCA">BCA - 1234 5678 90 (a/n NADI BOOK STORE)</option>
+                        <option value="Mandiri">Mandiri - 9876 5432 10 (a/n NADI BOOK STORE)</option>
+                        <option value="BNI">BNI - 4567 8901 23 (a/n NADI BOOK STORE)</option>
+                        <option value="BRI">BRI - 3210 9876 54 (a/n NADI BOOK STORE)</option>
                     </select>
                 </div>
                 

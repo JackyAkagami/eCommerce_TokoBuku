@@ -20,6 +20,7 @@ class Cart extends Controller
 
     if (!isset($_SESSION['cart'][$id])) {
         $_SESSION['cart'][$id] = [
+            'id_produk' => $id,
             'nama' => $product['nama_produk'],
             'harga' => $product['harga'],
             'qty' => 1,
