@@ -39,4 +39,13 @@ class Finance extends Controller {
             exit;
         }
     }
+
+    public function hapusTarget($id) {
+        $financeModel = $this->model('Finance_model');
+
+        $financeModel->deleteTarget($id);
+
+        header('Location: ' . BASEURL . '/finance');
+        exit;
+    }
 }

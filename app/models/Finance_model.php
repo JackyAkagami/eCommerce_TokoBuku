@@ -43,6 +43,7 @@ class Finance_model {
     public function getTargetBulanan() {
         $this->db->query("
             SELECT 
+                t.id,
                 t.bulan,
                 t.tahun,
                 t.target,
@@ -52,7 +53,7 @@ class Finance_model {
             ON MONTH(o.tanggal_order) = t.bulan
             AND YEAR(o.tanggal_order) = t.tahun
             AND o.status IN ('paid','completed')
-            GROUP BY t.bulan, t.tahun, t.target
+            GROUP BY t.id, t.bulan, t.tahun, t.target  -- ✅ LENGKAP!
             ORDER BY t.tahun DESC, t.bulan DESC
         ");
         return $this->db->resultSet();
@@ -84,6 +85,12 @@ class Finance_model {
         $this->db->bind('tahun', $data['tahun']);
         $this->db->bind('target', $data['target']);
 
+        return $this->db->execute();
+    }
+
+    public function deleteTarget($id) {
+        $this->db->query("DELETE FROM target_pendapatan WHERE id = :id");
+        $this->db->bind('id', $id);
         return $this->db->execute();
     }
 }

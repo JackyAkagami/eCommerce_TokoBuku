@@ -213,6 +213,7 @@
             <th>Selisih</th>
             <th>Progres</th>
             <th>Status</th>
+            <th>Aksi</th>
           </tr>
         </thead>
 
@@ -257,6 +258,14 @@
               <?php else: ?>
                 <span class="badge bg-warning text-dark">Belum</span>
               <?php endif; ?>
+            </td>
+            
+            <td>
+              <a href="<?= BASEURL ?>/finance/hapusTarget/<?= $row['id'] ?>"
+                class="btn btn-sm btn-danger"
+                onclick="return confirm('Yakin hapus target bulan ini?')">
+                <i class="bi bi-trash"></i>
+              </a>
             </td>
           </tr>
 

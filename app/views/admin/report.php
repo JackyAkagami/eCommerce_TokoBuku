@@ -84,9 +84,14 @@
       font-size: 12px;
     }
   </style>
-
 </head>
 <body>
+
+<?php
+$periode = $data['periode'] ?? 'bulan_ini';
+$status  = $data['status']  ?? 'semua';
+$orders  = $data['orders']  ?? [];
+?>
 
 <div class="wrapper">
 
@@ -114,107 +119,97 @@
       <h2>Report Penjualan</h2>
     </div>
 
+    <!-- FILTER -->
     <div class="card-box">
-      <div class="row g-3 align-items-end">
-        <div class="col-md-4">
-          <label class="form-label">Periode</label>
-          <select class="form-select">
-            <option>Bulan Ini</option>
-            <option>Bulan Lalu</option>
-            <option>3 Bulan Terakhir</option>
-            <option>1 Tahun Terakhir</option>
-          </select>
-        </div>
+      <form method="get" action="<?= BASEURL ?>/report">
+        <div class="row g-3 align-items-end">
+          <div class="col-md-4">
+            <label class="form-label">Periode</label>
+            <select class="form-select" name="periode">
+              <option value="bulan_ini"  <?= ($periode === 'bulan_ini') ? 'selected' : '' ?>>Bulan Ini</option>
+              <option value="bulan_lalu" <?= ($periode === 'bulan_lalu') ? 'selected' : '' ?>>Bulan Lalu</option>
+              <option value="3_bulan"    <?= ($periode === '3_bulan') ? 'selected' : '' ?>>3 Bulan Terakhir</option>
+              <option value="1_tahun"    <?= ($periode === '1_tahun') ? 'selected' : '' ?>>1 Tahun Terakhir</option>
+            </select>
+          </div>
 
-        <div class="col-md-4">
-          <label class="form-label">Status</label>
-          <select class="form-select">
-            <option>Semua</option>
-            <option>Sukses</option>
-            <option>Batal</option>
-            <option>Pending</option>
-          </select>
-        </div>
+          <div class="col-md-4">
+            <label class="form-label">Status</label>
+            <select class="form-select" name="status">
+              <option value="semua"   <?= ($status === 'semua') ? 'selected' : '' ?>>Semua</option>
+              <option value="sukses"  <?= ($status === 'sukses') ? 'selected' : '' ?>>Sukses</option>
+              <option value="batal"   <?= ($status === 'batal') ? 'selected' : '' ?>>Batal</option>
+              <option value="pending" <?= ($status === 'pending') ? 'selected' : '' ?>>Pending</option>
+            </select>
+          </div>
 
-        <div class="col-md-4">
-          <button class="btn btn-dark w-100">Terapkan Filter</button>
+          <div class="col-md-4">
+            <button class="btn btn-dark w-100" type="submit">Terapkan Filter</button>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
 
+    <!-- TABEL REPORT -->
     <div class="card-box">
-
       <table class="table table-hover align-middle">
         <thead>
           <tr>
-            <th>ID Order</th>
             <th>Pelanggan</th>
             <th>Tanggal</th>
             <th>Total</th>
-            <th>Metode</th>
             <th>Status</th>
             <th>Aksi</th>
           </tr>
         </thead>
 
         <tbody>
-
-          <?php 
-          $data = [
-            ["INV-001", "Ari Yoly", "2024-01-12", 250000, "Paypall", "Sukses"],
-            ["INV-002", "Bagas", "2024-01-14", 180000, "Credit card", "Pending"],
-            ["INV-003", "Rika", "2024-01-14", 325000, "E-Wallet", "Batal"],
-            ["INV-004", "Fikri", "2024-01-15", 210000, "Transfer", "Sukses"]
-          ];
-
-          foreach ($data as $d):
-            $status = strtolower($d[5]); 
-          ?>
-
-          <tr>
-            <td><?= $d[0] ?></td>
-            <td><?= $d[1] ?></td>
-            <td><?= date("d M Y", strtotime($d[2])) ?></td>
-            <td>Rp <?= number_format($d[3], 0, ',', '.') ?></td>
-            <td><?= $d[4] ?></td>
-            <td>
-              <?php if ($status == "sukses"): ?>
-                <span class="status-badge approved">Sukses</span>
-              <?php elseif ($status == "pending"): ?>
-                <span class="status-badge pending">Pending</span>
-              <?php else: ?>
-                <span class="status-badge rejected">Batal</span>
-              <?php endif; ?>
-            </td>
-
-            <td>
-              <button 
-                class="btn btn-outline-dark btn-sm viewDetail"
-                data-bs-toggle="modal"
-                data-bs-target="#detailModal"
-                data-id="<?= $d[0] ?>"
-                data-nama="<?= $d[1] ?>"
-                data-tanggal="<?= date("d M Y", strtotime($d[2])) ?>"
-                data-total="Rp <?= number_format($d[3], 0, ',', '.') ?>"
-                data-metode="<?= $d[4] ?>"
-                data-status="<?= $d[5] ?>"
-              >
-                <i class="bi bi-eye"></i>
-              </button>
-            </td>
-          </tr>
-
-          <?php endforeach; ?>
-
+          <?php if (!empty($orders)): ?>
+            <?php foreach ($orders as $o): 
+              $statusRaw   = $o['status_order'];
+              $statusLower = strtolower($statusRaw);
+            ?>
+            <tr>
+              <td><?= htmlspecialchars($o['nama_pelanggan']) ?></td>
+              <td><?= date("d M Y", strtotime($o['tanggal_order'])) ?></td>
+              <td>Rp <?= number_format($o['total_harga'], 0, ',', '.') ?></td>
+              <td>
+                <?php if (in_array($statusLower, ['paid','completed'])): ?>
+                  <span class="status-badge approved">Sukses</span>
+                <?php elseif ($statusLower === 'pending'): ?>
+                  <span class="status-badge pending">Pending</span>
+                <?php elseif ($statusLower === 'canceled'): ?>
+                  <span class="status-badge rejected">Batal</span>
+                <?php else: ?>
+                  <span class="status-badge pending"><?= htmlspecialchars($statusRaw) ?></span>
+                <?php endif; ?>
+              </td>
+              <td>
+                <button 
+                  class="btn btn-outline-dark btn-sm viewDetail"
+                  data-bs-toggle="modal"
+                  data-bs-target="#detailModal"
+                  data-nama="<?= htmlspecialchars($o['nama_pelanggan']) ?>"
+                  data-tanggal="<?= date("d M Y", strtotime($o['tanggal_order'])) ?>"
+                  data-total="Rp <?= number_format($o['total_harga'], 0, ',', '.') ?>"
+                  data-status="<?= htmlspecialchars($statusRaw) ?>"
+                >
+                  <i class="bi bi-eye"></i>
+                </button>
+              </td>
+            </tr>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <tr>
+              <td colspan="5" class="text-center">Tidak ada data untuk filter ini.</td>
+            </tr>
+          <?php endif; ?>
         </tbody>
       </table>
-
     </div>
 
   </div>
-
 </div>
-
 
 <!-- MODAL DETAIL -->
 <div class="modal fade" id="detailModal" tabindex="-1">
@@ -229,10 +224,6 @@
       <div class="modal-body">
         <table class="table">
           <tr>
-            <th>ID Order</th>
-            <td id="modal-id"></td>
-          </tr>
-          <tr>
             <th>Nama</th>
             <td id="modal-nama"></td>
           </tr>
@@ -243,10 +234,6 @@
           <tr>
             <th>Total</th>
             <td id="modal-total"></td>
-          </tr>
-          <tr>
-            <th>Metode</th>
-            <td id="modal-metode"></td>
           </tr>
           <tr>
             <th>Status</th>
@@ -263,18 +250,15 @@
   </div>
 </div>
 
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
   document.querySelectorAll('.viewDetail').forEach(btn => {
     btn.addEventListener('click', function() {
-      document.getElementById('modal-id').textContent = this.dataset.id;
-      document.getElementById('modal-nama').textContent = this.dataset.nama;
+      document.getElementById('modal-nama').textContent    = this.dataset.nama;
       document.getElementById('modal-tanggal').textContent = this.dataset.tanggal;
-      document.getElementById('modal-total').textContent = this.dataset.total;
-      document.getElementById('modal-metode').textContent = this.dataset.metode;
-      document.getElementById('modal-status').textContent = this.dataset.status;
+      document.getElementById('modal-total').textContent   = this.dataset.total;
+      document.getElementById('modal-status').textContent  = this.dataset.status;
     });
   });
 </script>
